@@ -1,3 +1,3 @@
 <?php
 
-echo 'User Page';
+echo 'User Page <br>';

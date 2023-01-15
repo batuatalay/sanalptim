@@ -1,13 +1,15 @@
 <?php 
 require_once __DIR__ . "/../model/product.model.php";
+require_once "simple.controller.php";
 /**
  * 
  */
-class Product {
+class Product extends SimpleController {
 	private $id;
 	private $product;
 
 	public function createNewProduct () {
+		$this->view("user", "index");
 		$productModel = new ProductModel([
 			"id" => $this->createProductId("GL"),
 			"name" => "Thor",

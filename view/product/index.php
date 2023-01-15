@@ -1,3 +1,3 @@
 <?php
 
-echo 'Product Page';
+echo 'Product Page <br>';

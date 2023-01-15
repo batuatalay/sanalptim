@@ -1,9 +1,10 @@
 <?php 
 require_once __DIR__ . "/../model/user.model.php";
+require_once "simple.controller.php";
 /**
  * 
  */
-class User {
+class User extends SimpleController{
 	private $id;
 	private $user;
 
@@ -16,6 +17,7 @@ class User {
 		var_dump($userModel);exit;
 	}
 	public function getUser () {
+		$this->view("user", "index");
         for ($i=0; $i <10 ; $i++) { 
             echo $i.PHP_EOL;
         }
