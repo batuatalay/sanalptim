@@ -1,5 +1,5 @@
 <?php
-	class Route {
+	class BaseRouter {
 		private $uri;
 		
 		public function __construct() {
@@ -11,6 +11,7 @@
 			if (preg_match('@^' . $url . '$@', $this->uri, $parameters)) {
 				if (is_callable($callback)) {
 					call_user_func($callback, $parameters);
+					return 0;
 				}
 				$controller = explode("@", $callback);
 				$controllerFile =BASE . '\\controller\\' . strtolower($controller[0]) . ".controller.php";

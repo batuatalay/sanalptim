@@ -1,12 +1,18 @@
 <?php 
 require_once __DIR__ . "/../model/user.model.php";
-require_once "simple.controller.php";
+spl_autoload_register( function($className) {
+	if($className == "SimpleController") {
+		$fullPath = "simple.controller.php";
+	} else {
+		$extension = ".controller.php";
+		$fullPath = $path . $className . $extension;
+	}
+	require_once $fullPath;
+});
 /**
  * 
  */
 class User extends SimpleController{
-	private $id;
-	private $user;
 
 	public function createNewUser () {
 		$userModel = new UserModel([

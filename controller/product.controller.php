@@ -1,15 +1,21 @@
 <?php 
 require_once __DIR__ . "/../model/product.model.php";
-require_once "simple.controller.php";
+spl_autoload_register( function($className) {
+	if($className == "SimpleController") {
+		$fullPath = "simple.controller.php";
+	} else {
+		$extension = ".controller.php";
+		$fullPath = $path . $className . $extension;
+	}
+	require_once $fullPath;
+});
 /**
  * 
  */
 class Product extends SimpleController {
-	private $id;
-	private $product;
-
+	
 	public function createNewProduct () {
-		$this->view("user", "index");
+		$this->view("product", "index");
 		$productModel = new ProductModel([
 			"id" => $this->createProductId("GL"),
 			"name" => "Thor",
