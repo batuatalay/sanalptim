@@ -14,10 +14,10 @@ spl_autoload_register( function($className) {
  */
 class Product extends SimpleController {
 	
-	public function createNewProduct () {
-		$this->view("product", "index");
+	public static function createNewProduct () {
+		self::view("product", "index");
 		$productModel = new ProductModel([
-			"id" => $this->createProductId("GL"),
+			"id" => self::createProductId("GL"),
 			"name" => "Thor",
 			"price" => 3999,
 			"type" => "GOLD",
@@ -26,7 +26,7 @@ class Product extends SimpleController {
 		var_dump($productModel);exit;
 	}
 
-	public function createProductId ($type = "GL") {
+	public static function createProductId ($type = "GL") {
 		if(!in_array(strtoupper($type), ["SL", "GL", "DM"])) {
 			$type = "GL";
 		}

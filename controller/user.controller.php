@@ -5,7 +5,7 @@ spl_autoload_register( function($className) {
 		$fullPath = "simple.controller.php";
 	} else {
 		$extension = ".controller.php";
-		$fullPath = $path . $className . $extension;
+		$fullPath = $className . $extension;
 	}
 	require_once $fullPath;
 });
@@ -14,7 +14,7 @@ spl_autoload_register( function($className) {
  */
 class User extends SimpleController{
 
-	public function createNewUser () {
+	public static function createNewUser () {
 		$userModel = new UserModel([
 			"name" => "Thor",
 			"surname" => "Odinson",
@@ -22,10 +22,15 @@ class User extends SimpleController{
 		]);
 		var_dump($userModel);exit;
 	}
-	public function getUser () {
-		$this->view("user", "index");
+	public static function getUser () {
+		self::view("user", "index");
         for ($i=0; $i <10 ; $i++) { 
             echo $i.PHP_EOL;
         }
+    }
+    public static function userProducts() {
+    	self::view("user", "index");
+    	echo "<p>THOR</p>";
+    	Product::createNewProduct();
     }
 }

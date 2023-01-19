@@ -5,3 +5,4 @@ class Router extends BaseRouter {
 $route = new Router();
 $route->run('/user/newUser', "user@createNewUser");
 $route->run('/user/getUser', "user@getUser");
+$route->run('/user/getUserProduct', "user@userProducts");
