@@ -15,6 +15,7 @@ spl_autoload_register( function($className) {
 class User extends SimpleController{
 
 	public static function createNewUser () {
+		self::view("user", "index");
 		$userModel = new UserModel([
 			"name" => "Thor",
 			"surname" => "Odinson",

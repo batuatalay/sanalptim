@@ -12,7 +12,7 @@
 				if (is_callable($callback)) {
 					call_user_func($callback, $parameters);
 					return 0;
-				}
+				};
 				$controller = explode("@", $callback);
 				$controllerFile =BASE . '\\controller\\' . strtolower($controller[0]) . ".controller.php";
 				if(file_exists($controllerFile)) {
