@@ -3,6 +3,7 @@ require_once "init.php";
 $dirName = dirname($_SERVER['SCRIPT_NAME']);
 $baseName = basename($_SERVER['SCRIPT_NAME']);
 $constantArr = explode('/', ltrim(str_replace([$dirName, $baseName], null, $_SERVER["REQUEST_URI"]), '/'));
+$constantArr = explode("/", ltrim($_SERVER["REQUEST_URI"], "/"));
 if(empty($constantArr[0])) {
 	header('Location:main');
 } else {

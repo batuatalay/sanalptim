@@ -1,3 +1,3 @@
 <?php
 
-echo 'Main Page <br>';
+echo 'Yapım Aşamasında <br>';

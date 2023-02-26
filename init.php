@@ -1,3 +1,3 @@
 <?php
-define("ENV", "http://localhost/");
-define("BASE", "C:\\xampp\\htdocs\\mvc");
+define("ENV", "http://sanalptim.com");
+define("BASE", "/var/www/html");
