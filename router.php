@@ -8,7 +8,7 @@
 			$this->uri = $_SERVER["REQUEST_URI"];
 		}
 		public function run($url, $callback, $parameters = null) {
-			$parameters = $this->getParamaters($url, $parameters);
+			$parameters = $this->getParamaters($url);
 			if(!empty($parameters)) {
 				$url = str_replace($parameters[0], $parameters[1], $url);
 				$parameters = $parameters[1];
@@ -27,7 +27,7 @@
 			}
 		}
 
-		private function getParamaters($url, $parameters){
+		private function getParamaters($url){
 			$data = explode('/', $this->uri);
 			$param = explode('/', $url);
 			foreach($param as $key => $pr) {
