@@ -24,10 +24,9 @@ class User extends SimpleController{
 		var_dump($userModel);exit;
 	}
 	public static function getUser () {
-		self::view("user", "index");
-        for ($i=0; $i <10 ; $i++) { 
-            echo $i.PHP_EOL;
-        }
+		$username = new UserModel([
+			"username" => ""
+		]);
     }
     public static function userProducts() {
     	self::view("user", "index");

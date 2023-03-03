@@ -1,5 +1,6 @@
 <?php
 require_once "init.php";
+require_once "model/mysql.php";
 $dirName = dirname($_SERVER['SCRIPT_NAME']);
 $baseName = basename($_SERVER['SCRIPT_NAME']);
 $constantArr = explode('/', ltrim(str_replace([$dirName, $baseName], null, $_SERVER["REQUEST_URI"]), '/'));
