@@ -16,15 +16,27 @@ class PtModel extends Mysql
 			$this->$key = $value;
 		}
 	}
-	public function get() {
+	public function getByUsername() {
 		try {
 			$result = $this->pdo->prepare("SELECT * FROM pts WHERE username=?");
 			$result->execute([$this->username]); 
-			$user = $result->fetch();
-			var_dump($user);exit;
+			$pt = $result->fetch();
+			var_dump($pt);exit;
 		}
 		catch(PDOException $e){
-			var_dump($e);
+			echo "fail";
+			exit;
+		}
+	}
+	public function getByID() {
+		try {
+			$result = $this->pdo->prepare("SELECT * FROM pts WHERE id=?");
+			$result->execute([$this->id]);
+			$pt = $result->fetch();
+			return $pt;
+		}
+		catch(PDOException $e) {
+			echo 'fail';
 			exit;
 		}
 	}
