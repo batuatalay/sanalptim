@@ -14,7 +14,7 @@ spl_autoload_register( function($className) {
 class Main extends SimpleController{
 
 	public static function getMainPage() {
-		self::view("main", "index");
+		self::view("main", "yapim");
 	}
 
 	public static function getSlider() {
