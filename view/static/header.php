@@ -68,8 +68,8 @@ $branches = Branch::getAll();
                         <!-- Sit Logo Start -->
                         <div class="site-branding">
                             <a href="index.html" title="Fithub">
-                                <!--<img src="assets/images/logo.png" alt="Logo">
-                                <img src="assets/images/logo_stickey.png" class="sticky-logo" alt="Logo"> -->
+                                <img src="assets/images/logo.png" alt="Logo">
+                                <img src="assets/images/logo_stickey.png" class="sticky-logo" alt="Logo">
                             </a>
                         </div>
                         <!-- Sit Logo End -->
