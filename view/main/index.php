@@ -114,7 +114,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="counter-box">
                         <div class="counter-content">
-                            <h2 class="h2-title counting-data" data-count="587">∞</h2>
+                            <h2 class="h2-title counting-data" data-count="587">8</h2>
                             <div class="counter-text">
                                 <img src="assets/images/gym-equipment.png" alt="Gym Equipment">
                                 <span>Ekipman Sayısı</span>
