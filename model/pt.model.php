@@ -9,7 +9,7 @@ class PtModel extends Mysql
 	private $lastLogin;
 	private $pdo;
 	
-	public function __construct($arr)
+	public function __construct($arr = [])
 	{
 		$this->pdo = $this->connect();
 		foreach ($arr as $key => $value) {
@@ -37,6 +37,19 @@ class PtModel extends Mysql
 		}
 		catch(PDOException $e) {
 			echo 'fail';
+			exit;
+		}
+	}
+
+	public function getAllPts() {
+		try {
+			$result = $this->pdo->prepare("SELECT * FROM pts");
+			$result->execute();
+			$pts = $result->fetchAll(PDO::FETCH_ASSOC);
+			return $pts;
+		}
+		catch (PDOException $e) {
+			echo "fail";
 			exit;
 		}
 	}

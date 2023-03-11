@@ -29,4 +29,10 @@ class Pt extends SimpleController{
     	$pt = $ptModel->getByID();
     	return $pt;
     }
+
+    public static function getPTs() {
+    	$ptModel = new PtModel();
+    	$pts = $ptModel->getAllPts();
+    	return $pts;
+    } 
 }

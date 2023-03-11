@@ -4,7 +4,7 @@ spl_autoload_register( function($className) {
 		$fullPath = "simple.controller.php";
 	} else {
 		$extension = ".controller.php";
-		$fullPath = $className . $extension;
+		$fullPath = strtolower($className) . $extension;
 	}
 	require_once $fullPath;
 });
@@ -14,16 +14,32 @@ spl_autoload_register( function($className) {
 class Main extends SimpleController{
 
 	public static function getMainPage() {
-		self::view("main", "yapim");
+		$title = "SanalPTim.com | Çok Yakında";
+		self::header($title);
+
+		$args = [
+			//"title" => $title ## We have to send data in array
+		];
+		self::view("main", "yapim", $args);
+
+		//$script = "<script>alert(1)</script>"; // if we need special script we need to send like this
+		$script = "";
+		self::footer($script);
 	}
 
-	public static function getSlider() {
-		self::view("main", "index");
-		echo 'Slider';
-	}
+	public static function getIndex() {
+		$pts = Pt::getPTs();
+		$title = "SanalPTim.com | Sporun En konforlu hali";
+		self::header($title);
 
-	public static function getUser() {
-		self::view("main", "index");
-		user::getUser();
+		$args = [
+			"pts" => $pts,
+
+		];
+		self::view("main", "index", $args);
+
+		//$script = "<script>alert(1)</script>"; // if we need special script we need to send like this
+		$script = "";
+		self::footer($script);
 	}
 }

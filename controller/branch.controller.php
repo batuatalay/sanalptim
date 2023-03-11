@@ -30,4 +30,10 @@ class Branch extends SimpleController{
 		
 
     }
+
+    public static function getAll() {
+    	$branchModel = new BranchModel();
+    	$branches = $branchModel->getAll();
+    	return $branches;
+    }
 }

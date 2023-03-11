@@ -6,7 +6,7 @@ class BranchModel extends Mysql
 	private $name;
 	private $description;
 	
-	public function __construct($arr)
+	public function __construct($arr = [])
 	{
 		$this->pdo = $this->connect();
 		foreach ($arr as $key => $value) {
@@ -18,6 +18,19 @@ class BranchModel extends Mysql
 			$result = $this->pdo->prepare("SELECT * FROM branches WHERE branch_key=?");
 			$result->execute([$this->key]); 
 			$branch = $result->fetch();
+			return $branch;
+		}
+		catch(PDOException $e){
+			echo 'fail';
+			exit;
+		}
+	}
+
+	public function getAll() {
+		try {
+			$result = $this->pdo->prepare("SELECT * FROM branches");
+			$result->execute(); 
+			$branch = $result->fetchAll(PDO::FETCH_ASSOC);
 			return $branch;
 		}
 		catch(PDOException $e){

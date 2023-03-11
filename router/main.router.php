@@ -4,5 +4,6 @@ class Router extends BaseRouter {
 }
 $route = new Router();
 $route->run('/main', "main@getMainPage");
+$route->run('/main/index', "main@getIndex");
 $route->run('/main/getSlider', "main@getSlider");
 $route->run('/main/getUser', "main@getUser");
