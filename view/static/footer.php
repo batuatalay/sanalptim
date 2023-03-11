@@ -7,7 +7,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer-box-one">
                         <a href="index.html">
-                            <img src="assets/images/logo.png" alt="Fithub">
+                            <img src="assets/images/logo_footer.png" style="height: 50px !important" alt="Fithub">
                         </a>
                         <p>Spor yapmanın en konforlu yolu</p>
                     </div>
