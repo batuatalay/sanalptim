@@ -29,6 +29,8 @@ class Main extends SimpleController{
 
 	public static function getIndex() {
 		$pts = Pt::getPTs();
+		$site = Site::get();
+		//$phone = $site->settings['phone'];
 		$title = "SanalPTim.com | Sporun En konforlu hali";
 		self::header($title);
 
