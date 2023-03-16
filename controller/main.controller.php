@@ -36,12 +36,13 @@ class Main extends SimpleController{
 
 		$args = [
 			"pts" => $pts,
+			"site" => $site 
 
 		];
 		self::view("main", "index", $args);
 
 		//$script = "<script>alert(1)</script>"; // if we need special script we need to send like this
 		$script = "";
-		self::footer($script);
+		self::footer($site, $script);
 	}
 }

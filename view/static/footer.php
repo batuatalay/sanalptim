@@ -9,7 +9,7 @@
                         <a href="index.html">
                             <img src="assets/images/logo_footer.png" style="height: 50px !important" alt="Fithub">
                         </a>
-                        <p>Spor yapmanın en konforlu yolu</p>
+                        <p><?=$site->settings['footerMessage']?></p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
@@ -35,7 +35,7 @@
                                     <i class="fa fa-map-marker" aria-hidden="true"></i>
                                 </div>
                                 <div class="footer-contact-text">
-                                    <span>Şeker mah. 1407.cad Sanalptim</span>
+                                    <span><?=$site->settings['address']?></span>
                                 </div>
                             </li>
                             <li>
@@ -43,8 +43,8 @@
                                     <i class="fa fa-phone" aria-hidden="true"></i>
                                 </div>
                                 <div class="footer-contact-text">
-                                    <span>0500 000 00 00</span>
-                                    <span>0312 300 00 00</span>
+                                    <span><?=$site->settings['phone']?></span>
+                                    <span><?=$site->settings['mobile']?></span>
                                 </div>
                             </li>
                             <li>
@@ -52,8 +52,7 @@
                                     <i class="fa fa-envelope" aria-hidden="true"></i>
                                 </div>
                                 <div class="footer-contact-text">
-                                    <span>bilgi@sanalptim.com</span>
-                                    <span>satis@sanalptim.com</span>
+                                    <span><?=$site->settings['mail']?></span>
                                 </div>
                             </li>
                         </ul>

@@ -17,7 +17,7 @@ class SimpleController
     	}
     }
 
-    public static function footer($script = null) {
+    public static function footer($site, $script = null) {
     	if(file_exists(BASE . "/view/static/footer.php")) {
     		include BASE . "/view/static/footer.php";
     	}
