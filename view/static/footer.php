@@ -68,9 +68,9 @@
                         </div>
                         <div class="footer-social">
                             <ul>
-                                <li><a href="javascript:void(0);"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                <li><a href="javascript:void(0);"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                                <li><a href="javascript:void(0);"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                <li><a href="<?=$site->settings['facebook']?>"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                <li><a href="<?=$site->settings['instagram']?>"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                <li><a href="<?=$site->settings['twitter']?>"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
                             </ul>
                         </div>
                     </div>
