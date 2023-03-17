@@ -19,14 +19,25 @@ class Branch extends SimpleController{
 			"key" => $branchKey
 		]);
 		$branch = $branchModel->get();
-		echo $branch['name'] . "\n";
+		$site = Site::get();
+		$title = "SanalPTim.com | " . $branch['name'];
+		self::header($title);
+		
 		$result = $branchModel->getBranchWithPt($branch['id']);
 		$pts = [];
 		foreach ($result as $rs) {
 			$pt = Pt::getByID($rs['pid']);
-			$pts[$pt['id']] = $pt['name'] . " " . $pt['surname'];
+			$pts[$pt['id']] = $pt;
 		}
-		var_dump($pts);exit;
+		$args = [
+			"branch" => $branch,
+			"pts" => $pts,
+			"site" => $site 
+
+		];
+		self::view("branch", "index", $args);
+		$script = "";
+		self::footer($site, $script);
 		
 
     }

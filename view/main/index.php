@@ -60,10 +60,9 @@
                 <div class="col-lg-6">
                     <div class="about-content-box wow fadeInRight" data-wow-delay=".5s">
                         <div class="about-us-title">
-                            <h2 class="h2-title">Sanalptim'e hoşgeldiniz</h2>
+                            <h2 class="h2-title"><?=$args['site']->settings['contentTitle']?></h2>
                         </div>
-                        <p>Herkesin hayalinde bir vucut vardır ama bunu yapabilmek için çalışmak gerekir.</p>
-                        <p>Hayat koşturmasından dolayı spora zaman ayıramıyor ve hayalimizdeki vucuda kavuşmak için spor salonuna gidemiyor olabiliriz. Sanalptim bünyesindeki özel hocalarımız ile size özel programlar ile evinizden çıkmadan ve evinizdeki imkanlarla sporunuzu yapın ve sağlıklı bir vucuda sahip olun</p>
+                        <?=$args['site']->settings['contentMessage']?>
                         <div class="about-text-box">
                             <div class="about-trainer-box">
                                 <div class="about-trainer-img">
