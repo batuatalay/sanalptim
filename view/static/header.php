@@ -87,21 +87,21 @@ $branches = Branch::getAll();
                                     <i class="menu-background middle"></i>
                                     <i class="menu-background bottom"></i>
                                <ul class="menu">
-                                   <li><a href="/main">Anasayfa</a></li>
+                                   <li><a href="/main/" target="_self">Anasayfa</a></li>
                                    <li class="sub-items">
                                     <a href="javascript:void(0);" title="Classes">Branşlarımız</a>
                                     <ul class="sub-menu">
                                         <?php 
                                             foreach ($branches as $branch) {
                                         ?> 
-                                        <li><a href="/branch/get/<?=$branch['branch_key']?>" title="Classes"><?=$branch['name']?></a></li>
+                                        <li><a href="/branch/get/<?=$branch['branch_key']?>" title="Classes" target="_self"><?=$branch['name']?></a></li>
 
                                         <?php  } ?>
                                     </ul>
                                     </li>
-                                    <li><a href="/main">Hocalarımız</a></li>
-                                    <li><a href="/main">Hareketler</a></li>
-                                    <li><a href="/main">Blog</a></li>
+                                    <li><a href="/pt/getAll" target="_self">Hocalarımız</a></li>
+                                    <li><a href="/main" target="_self">Hareketler</a></li>
+                                    <li><a href="/main" target="_self">Blog</a></li>
                                    <li><a href="contact-us.html">İletişim</a></li>
                                </ul>
                                 </div>

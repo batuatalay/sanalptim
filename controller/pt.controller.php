@@ -1,14 +1,13 @@
 <?php 
 require_once __DIR__ . "/../model/pt.model.php";
-
 spl_autoload_register( function($className) {
-	if($className == "SimpleController") {
-		$fullPath = "simple.controller.php";
-	} else {
-		$extension = ".controller.php";
-		$fullPath = $className . $extension;
-	}
-	require_once $fullPath;
+    if($className == "SimpleController") {
+        $fullPath = "simple.controller.php";
+    } else {
+        $extension = ".controller.php";
+        $fullPath = strtolower($className) . $extension;
+    }
+    require_once $fullPath;
 });
 /**
  * 
@@ -34,5 +33,23 @@ class Pt extends SimpleController{
     	$ptModel = new PtModel();
     	$pts = $ptModel->getAllPts();
     	return $pts;
-    } 
+    }
+
+    public static function getAll(){
+        $ptModel = new PtModel();
+        $pts = $ptModel->getAllPts();
+        $args = [
+            "pts" => $pts
+
+        ];
+
+        $site = Site::get();
+        $title = "SanalPTim.com | Hocalarımız";
+        self::header($title);
+
+        self::view("pt", "index", $args);
+
+        $script = "";
+        self::footer($site, $script);
+    }
 }
