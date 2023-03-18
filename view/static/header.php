@@ -9,7 +9,7 @@ $branches = Branch::getAll();
     <title><?php echo $title; ?></title>
     <meta name="keywords" content="Fithub" />
     <meta name="description" content="Fithub" />
-    <base href="http://sanalptim.com/" target="_blank">
+    <base href="<?=ENV?>" target="_blank">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
     <!-- FavIcon CSS -->
@@ -67,7 +67,7 @@ $branches = Branch::getAll();
                     <div class="col-lg-2">
                         <!-- Sit Logo Start -->
                         <div class="site-branding">
-                            <a href="index.html" title="Fithub">
+                            <a href="<?=ENV?>" title="Fithub">
                                 <img src="assets/images/logo.png" style="height: 50px !important;" alt="Logo">
                                 <img src="assets/images/logo_stickey.png" class="sticky-logo" style="height: 50px !important;" alt="Logo">
                             </a>
@@ -87,7 +87,7 @@ $branches = Branch::getAll();
                                     <i class="menu-background middle"></i>
                                     <i class="menu-background bottom"></i>
                                <ul class="menu">
-                                   <li><a href="/main/" target="_self">Anasayfa</a></li>
+                                   <li><a href="<?=ENV?>" target="_self">Anasayfa</a></li>
                                    <li class="sub-items">
                                     <a href="javascript:void(0);" title="Classes">Branşlarımız</a>
                                     <ul class="sub-menu">
