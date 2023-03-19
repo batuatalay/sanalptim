@@ -1,15 +1,24 @@
-
-<section class="main-inner-banner jarallax" data-jarallax data-speed="0.2" data-imgPosition="50% 0%" style="background-image: url(assets/images/team-in-banner.jpg);">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="banner-in-title">
-                        <h1 class="h1-title">Hocalarımız</h1>
+<section class="main-banner">
+    <div class="banner-overlay-bg animate-this">
+        <img src="assets/images/banner-overlay.png" alt="Overlay">
+    </div>
+    <div class="banner-blur-bg">
+        <img src="assets/images/blur-1.png" alt="Blur">
+    </div>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="banner-title-one">
+                    <div class="main-banner-subtitle-box wow fadeInUp" data-wow-delay=".5s">
+                       <div class="banner-subtitle-box">
+                        <div class="banner-subtitle-first"><h1>Hocalarımız</h1></div>
+                       </div> 
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
     <!--Banner End-->
 
     <!--Team Start-->

@@ -100,7 +100,7 @@ $branches = Branch::getAll();
                                     </ul>
                                     </li>
                                     <li><a href="/pt/getAll" target="_self">Hocalarımız</a></li>
-                                    <li><a href="/main" target="_self">Hareketler</a></li>
+                                    <li><a href="/move/getAll" target="_self">Hareketler</a></li>
                                     <li><a href="/main" target="_self">Blog</a></li>
                                    <li><a href="contact-us.html">İletişim</a></li>
                                </ul>
