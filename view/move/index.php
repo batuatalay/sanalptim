@@ -34,7 +34,7 @@
         		<tbody>
         			<?php foreach ($args['moves'] as $move) { ?>
         				<tr>
-        					<td><a href="/move/get/<?=$move['move_key']?>"><?=$move['name']?></a></td>
+        					<td><a href="/move/get/<?=$move['move_key']?>" target="_self"><?=$move['name']?></a></td>
         					<td><?=$move['description']?></td>
         					<td><?=$move['type']?></td>
         				</tr>
