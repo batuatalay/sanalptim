@@ -14,6 +14,7 @@ spl_autoload_register( function($className) {
 class Main extends SimpleController{
 
 	public static function getMainPage() {
+		$site = Site::get();
 		$title = "SanalPTim.com | Çok Yakında";
 		self::header($title);
 
@@ -24,7 +25,7 @@ class Main extends SimpleController{
 
 		//$script = "<script>alert(1)</script>"; // if we need special script we need to send like this
 		$script = "";
-		self::footer($script);
+		self::footer($site, $script);
 	}
 
 	public static function getIndex() {

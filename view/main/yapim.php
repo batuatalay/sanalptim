@@ -16,7 +16,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="main-banner-img-one">
-                        <img src="assets/images/banner-img-1.png" alt="Banner">
+                        <img src="assets/images/piti.png" alt="Banner">
                         <div class="banner-circle-first">
                             <img src="assets/images/banner-circle-one.png" alt="Circle">
                         </div>
