@@ -22,4 +22,15 @@ class SimpleController
     		include BASE . "/view/static/footer.php";
     	}
     }
+    public static function adminHeader($title = null) {
+        if(file_exists(BASE . "/view/static/adminHeader.php")) {
+            include BASE . "/view/static/adminHeader.php";
+        }
+    }
+
+    public static function adminFooter($script = null) {
+        if(file_exists(BASE . "/view/static/adminFooter.php")) {
+            include BASE . "/view/static/adminFooter.php";
+        }
+    }
 }
