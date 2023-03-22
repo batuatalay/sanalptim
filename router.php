@@ -34,7 +34,13 @@
 		}
 
 		public function post($url, $callback, $parameters = null) {
-
+			if ($_SERVER["REQUEST_METHOD"] == "POST") {
+				$parameters = $_POST;
+				$this->runFunction($url, $callback, $parameters);
+			}
+		}
+		public function delete($url, $callback, $parameters = null) {
+			var_dump($url);exit;
 			if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				$parameters = $_POST;
 				$this->runFunction($url, $callback, $parameters);

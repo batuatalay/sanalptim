@@ -9,4 +9,4 @@ $route->run('GET', '/admin/login', "admin@login");
 $route->run('GET', '/admin/index/#username', "admin@index");
 $route->run('GET', '/admin/index', "admin@index");
 $route->run('POST', '/admin/login', "admin@signIn");
-$route->run('DELETE', '/admin/logout', "admin@signOut");
+$route->run('GET', '/admin/logOut', "admin@signOut");

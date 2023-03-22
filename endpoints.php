@@ -6,6 +6,7 @@ $allEndPoints = [
 		'/admin/login',
 		'/admin/index',
 		'/admin/index/#username',
+		'/admin/logOut',
 
 		//Main
 		'/main',
@@ -32,7 +33,6 @@ $allEndPoints = [
 		'/admin/login'
 	],
 	"DELETE" => [
-		'/admin/logout'
 	],
 	"PUT" => []
 ];

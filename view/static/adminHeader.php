@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <base href="<?=ENV?>" target="_blank">
+    <base href="<?=ENV?>" target="_self">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>SanalPTim | Admin Panel</title>
@@ -91,7 +91,7 @@
                         <ul class="dropdown-menu pull-right">
                             <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
+                            <li><a href="/admin/logOut"><i class="material-icons">input</i>Sign Out</a></li>
                         </ul>
                     </div>
                 </div>
