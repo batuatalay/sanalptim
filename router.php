@@ -47,37 +47,27 @@
 					$url = str_replace($parameters[0], $parameters[1], $url);
 					$parameters = $parameters[1];
 				}
-				if (preg_match('@^' . $url . '$@', $this->uri)) {
-
-					if (is_callable($callback)) {
-						call_user_func($callback, $parameters);
-						return 0;
-					};
-
-					$controller = explode("@", $callback);
-					$controllerFile =BASE . '/controller/' . strtolower($controller[0]) . ".controller.php";
-					if(file_exists($controllerFile)) {
-						require $controllerFile;
-						call_user_func([new $controller[0], $controller[1]], $parameters);
-					}
-				}
+				$this->runFunction($url, $callback, $parameters);
 			}
 		}
 		public function post($url, $callback, $parameters = null) {
 
 			if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				$parameters = $_POST;
-				if (preg_match('@^' . $url . '$@', $this->uri)) {
-					if (is_callable($callback)) {
-						call_user_func($callback, $parameters);
-						return 0;
-					};
-					$controller = explode("@", $callback);
-					$controllerFile =BASE . '/controller/' . strtolower($controller[0]) . ".controller.php";
-					if(file_exists($controllerFile)) {
-						require $controllerFile;
-						call_user_func([new $controller[0], $controller[1]], $parameters);
-					}
+				$this->runFunction($url, $callback, $parameters);
+			}
+		}
+		private function runFunction($url, $callback, $parameters = null) {
+			if (preg_match('@^' . $url . '$@', $this->uri)) {
+				if (is_callable($callback)) {
+					call_user_func($callback, $parameters);
+					return 0;
+				};
+				$controller = explode("@", $callback);
+				$controllerFile =BASE . '/controller/' . strtolower($controller[0]) . ".controller.php";
+				if(file_exists($controllerFile)) {
+					require $controllerFile;
+					call_user_func([new $controller[0], $controller[1]], $parameters);
 				}
 			}
 		}
