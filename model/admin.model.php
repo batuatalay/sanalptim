@@ -1,12 +1,8 @@
 <?php
-class ClientModel extends Mysql
+class AdminModel extends Mysql
 {
-	private $id;
-	private $name;
-	private $surname;
 	private $username;
 	private $password;
-	private $lastLogin;
 	private $pdo;
 	
 	public function __construct($arr)
@@ -16,12 +12,12 @@ class ClientModel extends Mysql
 			$this->$key = $value;
 		}
 	}
-	public function get() {
+	public function login() {
 		try {
-			$result = $this->pdo->prepare("SELECT * FROM clients WHERE username=?");
-			$result->execute([$this->username]); 
+			$result = $this->pdo->prepare("SELECT * FROM pts WHERE username=? AND password=?");
+			$result->execute([$this->username, $this->password]); 
 			$user = $result->fetch();
-			var_dump($user);exit;
+			return $user;
 		}
 		catch(PDOException $e){
 			var_dump($e);

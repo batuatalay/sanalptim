@@ -22,6 +22,20 @@ class Admin extends SimpleController{
         self::view("admin", "login");
     }
     public static function signIn($args){
-        var_dump($args);exit;
+        $modelArr = [
+            "username" => $args['username'],
+            "password" => hash('sha256', $args['password'])
+        ];
+        $adminModel = new AdminModel($modelArr);
+        $admin = $adminModel->login();
+        if (!$admin) {
+            $args = [
+                "error" => "Login Fail"
+            ];
+            self::view("admin", "login", $args);
+        } else {
+            $_SESSION['admin'] = $admin;
+            header('Location: /admin/index');
+        }
     }
 }

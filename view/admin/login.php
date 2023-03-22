@@ -1,3 +1,8 @@
+<?php 
+if (isset($args['error'])) {
+    $error = $args['error'];
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -34,7 +39,7 @@
         </div>
         <div class="card">
             <div class="body">
-                <form id="/admin/login" method="POST">
+                <form id="/admin/login" method="POST" target="_SELF">
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="material-icons">person</i>
@@ -52,6 +57,12 @@
                         </div>
                     </div>
                     <div class="row">
+                        <?php if (isset($error)) { ?>
+                            <div class="alert alert-danger">
+                                <?=$error;?>
+                            </div>
+
+                            <?php } ?>
                         <div class="col-xs-4">
                             <button class="btn btn-block bg-pink waves-effect" type="submit">Giriş</button>
                         </div>
