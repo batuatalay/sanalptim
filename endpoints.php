@@ -31,7 +31,9 @@ $allEndPoints = [
 	"POST" => [
 		'/admin/login'
 	],
-	"DELETE" => [],
+	"DELETE" => [
+		'/admin/logout'
+	],
 	"PUT" => []
 ];
 

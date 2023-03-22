@@ -33,4 +33,12 @@ class SimpleController
             include BASE . "/view/static/adminFooter.php";
         }
     }
+
+    public static function isLogin($location) {
+        if (isset($_SESSION[$location])) {
+            return $_SESSION[$location];
+        } else {
+            return false;
+        }
+    }
 }

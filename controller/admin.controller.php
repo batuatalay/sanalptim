@@ -15,13 +15,21 @@ spl_autoload_register( function($className) {
 class Admin extends SimpleController{
 
 	public static function index() {
+        if(!self::isLogin("admin")) {
+            header('Location: /admin/login');
+        }
 		self::adminHeader();
 		self::adminFooter();
     }
+
     public static function login() {
+        if (self::isLogin("admin")) {
+            header('Location: /admin/index');
+        }
         self::view("admin", "login");
     }
-    public static function signIn($args){
+
+    public static function signIn($args) {
         $modelArr = [
             "username" => $args['username'],
             "password" => hash('sha256', $args['password'])
@@ -37,5 +45,9 @@ class Admin extends SimpleController{
             $_SESSION['admin'] = $admin;
             header('Location: /admin/index');
         }
+    }
+    public static function signOut() {
+        unset($_SESSION['admin']);
+        header('Location: /admin/login');
     }
 }
