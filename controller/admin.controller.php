@@ -18,4 +18,10 @@ class Admin extends SimpleController{
 		self::adminHeader();
 		self::adminFooter();
     }
+    public static function login() {
+        self::view("admin", "login");
+    }
+    public static function signIn($args){
+        var_dump($args);exit;
+    }
 }

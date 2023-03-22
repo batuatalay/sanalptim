@@ -124,13 +124,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:void(0);" class="menu-toggle">
+                        <a class="menu-toggle">
                             <i class="material-icons">widgets</i>
                             <span>Widgets</span>
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="javascript:void(0);" class="menu-toggle">
+                                <a class="menu-toggle">
                                     <span>Cards</span>
                                 </a>
                                 <ul class="ml-menu">
@@ -146,7 +146,7 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="javascript:void(0);" class="menu-toggle">
+                                <a class="menu-toggle">
                                     <span>Infobox</span>
                                 </a>
                                 <ul class="ml-menu">
