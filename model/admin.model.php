@@ -17,6 +17,12 @@ class AdminModel extends Mysql
 			$result = $this->pdo->prepare("SELECT * FROM pts WHERE username=? AND password=?");
 			$result->execute([$this->username, $this->password]); 
 			$user = $result->fetch();
+
+			$update = $this->pdo->prepare("UPDATE pts SET lastLogin=:loginDate WHERE username=:username");
+			$update->bindParam(':loginDate', date('Y-m-d H:i:s'));
+			$update->bindParam(':username', $this->username);
+			$update->execute();
+			
 			return $user;
 		}
 		catch(PDOException $e){
