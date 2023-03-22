@@ -8,7 +8,7 @@ if (isset($args['error'])) {
 
 <head>
     <meta charset="UTF-8">
-    <base href="<?=ENV?>" target="_blank">
+    <base href="<?=ENV?>" target="_SELF">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>Sign In | Bootstrap Based Admin Template - Material Design</title>
     <!-- Favicon-->
@@ -34,7 +34,7 @@ if (isset($args['error'])) {
 <body class="login-page">
     <div class="login-box">
         <div class="logo">
-            <a><img src="assets/images/logo.png" style="height: 178px !important;" alt="Logo"></a><br/>
+            <a><img src="assets/images/logoBig.png" style="height: 178px !important;" alt="Logo"></a><br/>
             <small>Sanalptim | Yönetici Paneli</small>
         </div>
         <div class="card">
