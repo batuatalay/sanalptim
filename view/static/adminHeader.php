@@ -180,7 +180,7 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a class=" waves-effect waves-block">
+                                <a class=" waves-effect waves-block" href="/admin/blog">
                                     <span>Yazı Ekle</span>
                                 </a>
                             </li>
@@ -192,7 +192,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="pages/typography.html">
+                        <a href="/admin/settings">
                             <span>Site Ayarları</span>
                         </a>
                     </li>

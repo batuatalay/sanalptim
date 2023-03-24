@@ -39,6 +39,9 @@
 
     <!-- Demo Js -->
     <script src="admin/js/demo.js"></script>
+    <?php 
+        echo $script;
+    ?>
 </body>
 
 </html>

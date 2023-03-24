@@ -5,7 +5,7 @@ class AdminModel extends Mysql
 	private $password;
 	private $pdo;
 	
-	public function __construct($arr)
+	public function __construct($arr = NULL)
 	{
 		$this->pdo = $this->connect();
 		foreach ($arr as $key => $value) {
@@ -30,4 +30,44 @@ class AdminModel extends Mysql
 			exit;
 		}
 	}
+	public function saveSettings($data) {
+		$truncate = $this->pdo->prepare("TRUNCATE site_settings");
+		$truncate->execute();
+		foreach ($data as $key => $value) {
+			$insert = $this->pdo->prepare("INSERT INTO site_settings (prop, value) VALUES (:prop, :value)");
+			$insert->bindParam(':prop', $key);
+			$insert->bindParam(':value', $value);
+			$insert->execute();
+		}
+	}
+	public function getAllBlog() {
+		$blogs = $this->pdo->prepare("SELECT * FROM blogs");
+		$blogs->execute();
+		$result = $blogs->fetchAll(PDO::FETCH_ASSOC);
+		return $result;
+	}
+
+	public function addBlog($data) {
+		$title = $_POST['title'];
+		$blog_key = $this->seflink($title);
+		$content = $_POST['content'];
+		$file = pathinfo($_POST['file']);
+		$target_file = BASE . '/assets/images/' . $blog_key . '.' . $file['extension'];
+		var_dump($_FILES);exit;
+		move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
+	}
+
+	public function seflink($text){
+        $find = array("/Ğ/","/Ü/","/Ş/","/İ/","/Ö/","/Ç/","/ğ/","/ü/","/ş/","/ı/","/ö/","/ç/");
+        $degis = array("G","U","S","I","O","C","g","u","s","i","o","c");
+        $text = preg_replace("/[^0-9a-zA-ZÄzÜŞİÖÇğüşıöç]/"," ",$text);
+        $text = preg_replace($find,$degis,$text);
+        $text = preg_replace("/ +/"," ",$text);
+        $text = preg_replace("/ /","-",$text);
+        $text = preg_replace("/\s/","",$text);
+        $text = strtolower($text);
+        $text = preg_replace("/^-/","",$text);
+        $text = preg_replace("/-$/","",$text);
+        return $text;
+    }
 }

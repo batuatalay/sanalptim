@@ -9,7 +9,7 @@ $branches = Branch::getAll();
     <title><?php echo $title; ?></title>
     <meta name="keywords" content="Fithub" />
     <meta name="description" content="Fithub" />
-    <base href="<?=ENV?>" target="_blank">
+    <base href="<?=ENV?>" target="_self">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
     <!-- FavIcon CSS -->
