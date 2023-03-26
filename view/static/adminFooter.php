@@ -23,19 +23,11 @@
     <!-- ChartJs -->
     <script src="admin/plugins/chartjs/Chart.bundle.js"></script>
 
-    <!-- Flot Charts Plugin Js -->
-    <script src="admin/plugins/flot-charts/jquery.flot.js"></script>
-    <script src="admin/plugins/flot-charts/jquery.flot.resize.js"></script>
-    <script src="admin/plugins/flot-charts/jquery.flot.pie.js"></script>
-    <script src="admin/plugins/flot-charts/jquery.flot.categories.js"></script>
-    <script src="admin/plugins/flot-charts/jquery.flot.time.js"></script>
-
     <!-- Sparkline Chart Plugin Js -->
     <script src="admin/plugins/jquery-sparkline/jquery.sparkline.js"></script>
 
     <!-- Custom Js -->
     <script src="admin/js/admin.js"></script>
-    <script src="admin/js/pages/index.js"></script>
 
     <!-- Demo Js -->
     <script src="admin/js/demo.js"></script>
