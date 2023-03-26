@@ -101,7 +101,7 @@
             <div class="menu">
                 <ul class="list">
                     <li>
-                        <a href="index.html">
+                        <a href="/admin/index">
                             <i class="material-icons">home</i>
                             <span>Anasayfa</span>
                         </a>
@@ -112,12 +112,12 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a class=" waves-effect waves-block">
+                                <a class=" waves-effect waves-block" href="/admin/branch/add">
                                     <span>Branş Ekle</span>
                                 </a>
                             </li>
                             <li>
-                                <a class=" waves-effect waves-block">
+                                <a class=" waves-effect waves-block" href="/admin/branches">
                                     <span>Branşlar</span>
                                 </a>
                             </li>
@@ -129,12 +129,12 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a class=" waves-effect waves-block">
+                                <a class=" waves-effect waves-block" href="/admin/pt/add">
                                     <span>Hoca Ekle</span>
                                 </a>
                             </li>
                             <li>
-                                <a class=" waves-effect waves-block">
+                                <a class=" waves-effect waves-block" href="/admin/pts">
                                     <span>Hocalar</span>
                                 </a>
                             </li>
@@ -146,12 +146,12 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a class=" waves-effect waves-block">
+                                <a class=" waves-effect waves-block" href="/admin/move/add">
                                     <span>Hareket Ekle</span>
                                 </a>
                             </li>
                             <li>
-                                <a class=" waves-effect waves-block">
+                                <a class=" waves-effect waves-block" href="/admin/moves">
                                     <span>Hareketler</span>
                                 </a>
                             </li>
@@ -163,12 +163,12 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a class=" waves-effect waves-block">
+                                <a class=" waves-effect waves-block" href="/admin/workout/add">
                                     <span>Program Ekle</span>
                                 </a>
                             </li>
                             <li>
-                                <a class=" waves-effect waves-block">
+                                <a class=" waves-effect waves-block" href="/admin/workouts">
                                     <span>Programlar</span>
                                 </a>
                             </li>
@@ -180,12 +180,12 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a class=" waves-effect waves-block" href="/admin/blog">
+                                <a class=" waves-effect waves-block" href="/admin/blog/add">
                                     <span>Yazı Ekle</span>
                                 </a>
                             </li>
                             <li>
-                                <a class=" waves-effect waves-block">
+                                <a class=" waves-effect waves-block" href="/admin/blogs">
                                     <span>Yazılar</span>
                                 </a>
                             </li>
