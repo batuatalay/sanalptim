@@ -18,19 +18,21 @@ class Admin extends SimpleController{
         if(!self::isLogin("admin")) {
             header('Location: /admin/login');
         }
-		self::adminHeader();
         $adminModel = new AdminModel();
 
         $activeClient = $adminModel->getClients("ACTIVE");
         $waitingClient = $adminModel->getClients("WAITING");
         $activePt = $adminModel->getPts("ACTIVE");
         $waitingPt = $adminModel->getPts("WAITING");
+        $allClients = $adminModel->getAllClients();
         $args = [
             'activeClient' => $activeClient,
             'waitingClient' => $waitingClient,
             'activePt' => $activePt,
-            'waitingPt' => $waitingPt
+            'waitingPt' => $waitingPt,
+            'allClients' => $allClients
         ];
+        self::adminHeader();
         self::view("admin", "index", $args);
 		self::adminFooter();
     }

@@ -61,6 +61,53 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="card">
+                <div class="header">
+                    <h2>Son 50 kullanıcı</h2>
+                </div>
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-hover dashboard-task-infos">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Ad-Soyad</th>
+                                    <th>Kullanıcı Adı</th>
+                                    <th>Telefon</th>
+                                    <th>Üyelik Tipi</th>
+                                    <th>Durum</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($args['allClients'] as $client) {  
+                                    switch ($client['status']) {
+                                        case 'ACTIVE':
+                                            $label = "label bg-green";
+                                            break;
+                                        case 'WAITING':
+                                            $label = "label bg-orange";
+                                            break;
+                                        case 'PASSIVE':
+                                            $label = "label bg-red";
+                                            break;
+                                    }
+                                ?>
+                                <tr>
+                                    <td><?=$client['id']?></td>
+                                    <td><?=ucfirst($client['name']) . ' ' . ucfirst($client['surname'])?></td>
+                                    <td><?=$client['username']?></td>
+                                    <td><?=$client['phone']?></td>
+                                    <td><?=$client['type']?></td>
+                                    <td><span class="<?=$label?>"><?=$client['status']?></span></td>
+                                </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 

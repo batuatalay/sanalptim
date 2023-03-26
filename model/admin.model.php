@@ -94,4 +94,23 @@ class AdminModel extends Mysql
 		$pts = $pt->fetchAll(PDO::FETCH_ASSOC);
 		return $pts;
     }
+
+    public function getAllClients() {
+	    $client = $this->pdo->prepare("SELECT * FROM clients AS c ORDER BY c.startDate DESC LIMIT 50");
+	    $client->execute();
+	    $returnClients = $client->fetchAll(PDO::FETCH_ASSOC);
+	    $clients = [];
+	    foreach($returnClients as $client) {
+	    	$clients[$client['id']] = $client;
+	    	$prop = $this->pdo->prepare("SELECT * fROM client_properties WHERE cid=:cid");
+	    	$prop->bindParam(':cid', $client['id']);
+	    	$prop->execute();
+	    	$prs = $prop->fetchAll(PDO::FETCH_ASSOC);
+	    	foreach ($prs as $pr) {
+	    		$client[$pr['prop']] = $pr['value'];
+	    		$clients[$client['id']] = $client;
+	    	}
+	    }
+	    return $clients;
+    }
 }
