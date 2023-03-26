@@ -70,4 +70,28 @@ class AdminModel extends Mysql
         $text = preg_replace("/-$/","",$text);
         return $text;
     }
+
+    public function getClients($status = null) {
+    	if($status == null) {
+    		$client = $this->pdo->prepare("SELECT * FROM clients");
+    	} else {
+	    	$client = $this->pdo->prepare("SELECT * FROM clients WHERE status = :status");
+	    	$client->bindParam(':status', $status);
+	    }
+		$client->execute();
+		$clients = $client->fetchAll(PDO::FETCH_ASSOC);
+		return $clients;
+    }
+
+    public function getPts($status = null) {
+    	if($status == null) {
+    		$pt = $this->pdo->prepare("SELECT * FROM pts");
+    	} else {
+	    	$pt = $this->pdo->prepare("SELECT * FROM pts WHERE status = :status");
+	    	$pt->bindParam(':status', $status);
+	    }
+		$pt->execute();
+		$pts = $pt->fetchAll(PDO::FETCH_ASSOC);
+		return $pts;
+    }
 }
