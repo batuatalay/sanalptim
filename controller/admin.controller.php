@@ -111,4 +111,70 @@ class Admin extends SimpleController{
         $adminModel = new AdminModel();
         $blogs = $adminModel->getAllBlog();
     }
+
+    public static function branchAdd() {
+        if(!self::isLogin("admin")) {
+            header('Location: /admin/login');
+        }
+        $pts = [];
+        foreach (Pt::getPTs() as $pt) {
+            $pts[$pt['id']] = $pt['name'] . ' ' . $pt['surname'];
+        }
+        $args = [
+            'pts' => $pts
+        ];
+        self::adminHeader();
+        self::view("admin", "branch", $args);
+        self::adminFooter();
+    }
+
+    public static function createNewBranch() {
+        if(!self::isLogin("admin")) {
+            header('Location: /admin/login');
+        }
+        $adminModel = new AdminModel();
+        $response = $adminModel->createBranch($_POST);
+        $args = [
+            "response" => $response
+        ];
+        self::adminHeader();
+        self::view("admin", "branch", $args);
+        self::adminFooter();
+    }
+
+    public static function ptAdd() {
+        if(!self::isLogin("admin")) {
+            header('Location: /admin/login');
+        }
+        $branches = [];
+        foreach (Branch::getAll() as $branch) {
+            $branches[$branch['id']] = $branch['name'];
+        }
+        $args = [
+            'branches' => $branches
+        ];
+        self::adminHeader();
+        self::view("admin", "pt", $args);
+        self::adminFooter();
+    }
+
+    public static function createNewPt() {
+        if(!self::isLogin("admin")) {
+            header('Location: /admin/login');
+        }
+        $_POST['file'] = $_FILES['file'];
+        $adminModel = new AdminModel();
+        $response = $adminModel->createPt($_POST);
+        
+        foreach (Branch::getAll() as $branch) {
+            $branches[$branch['id']] = $branch['name'];
+        }
+        $args = [
+            'branches' => $branches,
+            'response' => $response
+        ];
+        self::adminHeader();
+        self::view("admin", "pt", $args);
+        self::adminFooter();
+    }
 }

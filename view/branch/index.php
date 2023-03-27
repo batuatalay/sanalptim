@@ -14,7 +14,7 @@
                         <div class="banner-subtitle-first"><h1><?=strtoupper($args['branch']['name'])?></h1></div>
                        </div> 
                     </div>
-                    <p class="wow fadeInUp" data-wow-delay=".9s"><?=$args['branch']['description']?></p>
+                    <p class="wow fadeInUp" data-wow-delay=".9s"><?=htmlspecialchars_decode($args['branch']['description'])?></p>
                 </div>
             </div>
         </div>

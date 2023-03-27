@@ -8,8 +8,17 @@ $allEndPoints = [
 		'/admin/index/#username',
 		'/admin/logOut',
 		'/admin/settings',
-		'/admin/blog',
-		'/admin/blogs',
+		'/admin/branch/add',
+		'/admin/branches',
+		'/admin/pt/add',
+		'/admin/pts',
+		'/admin/move/add',
+		'/admin/moves',
+		'/admin/workout/add',
+		'/admin/workouts',
+		'/admin/blog/add',
+		'admin/blogs',
+
 
 		//Main
 		'/main',
@@ -35,7 +44,9 @@ $allEndPoints = [
 	"POST" => [
 		'/admin/login',
 		'/admin/settings',
-		'/admin/blog'
+		'/admin/blog',
+		'/admin/branch/add',
+		'/admin/pt/add'
 	],
 	"DELETE" => [
 	],

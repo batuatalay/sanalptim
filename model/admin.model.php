@@ -5,7 +5,7 @@ class AdminModel extends Mysql
 	private $password;
 	private $pdo;
 	
-	public function __construct($arr = NULL)
+	public function __construct($arr = [])
 	{
 		$this->pdo = $this->connect();
 		foreach ($arr as $key => $value) {
@@ -112,5 +112,52 @@ class AdminModel extends Mysql
 	    	}
 	    }
 	    return $clients;
+    }
+    public function createBranch($data) {
+    	try {
+	    	$branch_key = $this->seflink($data['name']);
+	    	$name = $data['name'];
+	    	$description = htmlspecialchars($data['content']);
+	    	$branch = $this->pdo->prepare("INSERT INTO branches (branch_key, name, description) VALUES (?, ?, ?)");
+		    $branch->execute([$branch_key, $name, $description]);
+		    return true;
+		} catch (PDOException $e) {
+			$errorLog = [
+				"addBranch",
+				$e
+			];
+			file_put_contents("/mysql.log", json_encode($errorLog));
+			return false;
+		}
+    }
+
+    public function createPt($data) {
+    	try {
+    		$name = $data['name'];
+    		$surname = $data['surname'];
+    		$username = $data['username'];
+    		$password = $data['password'];
+    		$targetDir = BASE . "/assets/images/pt/";
+    		$ext = pathinfo($data['file']['name'] , PATHINFO_EXTENSION);
+    		$file = $data['file']['tmp_name'];
+    		$targetFile = $targetDir . $username . "." . $ext;
+    		if (!@move_uploaded_file($file, $targetFile)) {
+			    return false;
+			}
+    		$branches = isset($data['branches']) ? $data['branches'] : false;
+    		$imagePath = "assets/images/pt/" . $username . "." . $ext;
+    		$pt = $this->pdo->prepare("INSERT INTO pts (name, surname, username, password, image, status, lastLogin) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    		$result = $pt->execute([$name, $surname, $username, hash('sha256', $password), $imagePath, "WAITING", date('Y-m-d H:i:s')]);
+    		if($branches) {
+    			$pid = $this->pdo->lastInsertId();
+    			foreach ($branches as $bid) {
+    				$branchPt = $this->pdo->prepare("INSERT INTO pt_branch (pid, bid) VALUES (?, ?)");
+    				$branchPt->execute([$pid, $bid]);
+    			}
+    		}
+    		return true;
+    	} catch (PDOException $e) {
+    		return false;
+    	}
     }
 }
