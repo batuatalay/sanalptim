@@ -141,7 +141,8 @@ class AdminModel extends Mysql
     		$ext = pathinfo($data['file']['name'] , PATHINFO_EXTENSION);
     		$file = $data['file']['tmp_name'];
     		$targetFile = $targetDir . $username . "." . $ext;
-    		if (!@move_uploaded_file($file, $targetFile)) {
+    		if (!move_uploaded_file($file, $targetFile)) {
+    			echo 'fail';exit;
 			    return false;
 			}
     		$branches = isset($data['branches']) ? $data['branches'] : false;
@@ -157,6 +158,7 @@ class AdminModel extends Mysql
     		}
     		return true;
     	} catch (PDOException $e) {
+    		var_dump($e);exit;
     		return false;
     	}
     }
