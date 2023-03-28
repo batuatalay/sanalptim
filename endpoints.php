@@ -17,7 +17,8 @@ $allEndPoints = [
 		'/admin/workout/add',
 		'/admin/workouts',
 		'/admin/blog/add',
-		'admin/blogs',
+		'/admin/blogs',
+		'/site/getSettings',
 
 		//Main
 		'/main',

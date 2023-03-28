@@ -18,4 +18,9 @@ class Site extends SimpleController{
 		$siteSettings = new SiteSettingsModel();
 		return $siteSettings;
     }
+
+    public static function get4API() {
+        $siteSettings = new SiteSettingsModel();
+        echo json_encode($siteSettings);
+    }
 }
