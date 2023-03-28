@@ -26,7 +26,6 @@ class AdminModel extends Mysql
 			return $user;
 		}
 		catch(PDOException $e){
-			var_dump($e);
 			exit;
 		}
 	}
@@ -122,11 +121,6 @@ class AdminModel extends Mysql
 		    $branch->execute([$branch_key, $name, $description]);
 		    return true;
 		} catch (PDOException $e) {
-			$errorLog = [
-				"addBranch",
-				$e
-			];
-			file_put_contents("/mysql.log", json_encode($errorLog));
 			return false;
 		}
     }
@@ -142,7 +136,6 @@ class AdminModel extends Mysql
     		$file = $data['file']['tmp_name'];
     		$targetFile = $targetDir . $username . "." . $ext;
     		if (!move_uploaded_file($file, $targetFile)) {
-    			echo 'fail';exit;
 			    return false;
 			}
     		$branches = isset($data['branches']) ? $data['branches'] : false;
@@ -167,8 +160,35 @@ class AdminModel extends Mysql
     		}
     		return true;
     	} catch (PDOException $e) {
-    		var_dump($e);exit;
     		return false;
     	}
+    }
+
+    public function getAllBranches() {
+    	$branches = $this->pdo->prepare("SELECT * FROM branches");
+		$branches->execute();
+		$result = $branches->fetchAll(PDO::FETCH_ASSOC);
+		return $result;
+    }
+
+    public function getAllPts() {
+    	$pts = $this->pdo->prepare("SELECT * FROM pts");
+		$pts->execute();
+		$results = $pts->fetchAll(PDO::FETCH_ASSOC);
+		$allPt = [];
+		foreach ($results as $result) {
+			$allPt[$result['id']]['name'] = ucfirst($result['name']) . ' ' . ucfirst($result['surname']);
+			$allPt[$result['id']]['username'] = $result['username'];
+			$allPt[$result['id']]['lastLogin'] = $result['lastLogin'];
+			$allPt[$result['id']]['status'] = $result['status'];
+
+			$properties = $this->pdo->prepare("SELECT * from pt_properties where pid= ?");
+			$properties->execute([$result['id']]);
+			$propertyResult = $properties->fetchAll(PDO::FETCH_ASSOC);
+			foreach ($propertyResult as $property) {
+				$allPt[$result['id']][$property['prop']] = $property['value'];
+			}
+		}
+		return $allPt;
     }
 }

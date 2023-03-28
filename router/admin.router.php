@@ -13,7 +13,7 @@ $route->run('GET', '/admin/branch/add', "admin@branchAdd");
 
 $route->run('GET', '/admin/branches', "admin@getAllBranches");
 $route->run('GET', '/admin/pt/add', "admin@ptAdd");
-$route->run('GET', '/admin/pts', "admin@pts");
+$route->run('GET', '/admin/pts', "admin@getAllPts");
 $route->run('GET', '/admin/move/add', "admin@moveAdd");
 $route->run('GET', '/admin/moves', "admin@moves");
 $route->run('GET', '/admin/workout/add', "admin@workoutAdd");

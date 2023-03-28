@@ -177,4 +177,32 @@ class Admin extends SimpleController{
         self::view("admin", "pt", $args);
         self::adminFooter();
     }
+
+    public static function getAllBranches() {
+        if(!self::isLogin("admin")) {
+            header('Location: /admin/login');
+        }
+        $adminModel = new AdminModel();
+        $branches = $adminModel->getAllBranches();
+        $args = [
+            "allBranches" => $branches
+        ];
+        self::adminHeader();
+        self::view("admin", "branches", $args);
+        self::adminFooter();
+    }
+
+    public static function getAllPts() {
+        if(!self::isLogin("admin")) {
+            header('Location: /admin/login');
+        }
+        $adminModel = new AdminModel();
+        $pts = $adminModel->getAllPts();
+        $args = [
+            "allPts" => $pts
+        ];
+        self::adminHeader();
+        self::view("admin", "pts", $args);
+        self::adminFooter();
+    }
 }

@@ -19,7 +19,6 @@ $allEndPoints = [
 		'/admin/blog/add',
 		'admin/blogs',
 
-
 		//Main
 		'/main',
 		'/main/index',
