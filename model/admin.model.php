@@ -146,14 +146,23 @@ class AdminModel extends Mysql
 			    return false;
 			}
     		$branches = isset($data['branches']) ? $data['branches'] : false;
+    		$properties = isset($data['properties']) ? $data['properties'] : false;
     		$imagePath = "assets/images/pt/" . $username . "." . $ext;
     		$pt = $this->pdo->prepare("INSERT INTO pts (name, surname, username, password, image, status, lastLogin) VALUES (?, ?, ?, ?, ?, ?, ?)");
     		$result = $pt->execute([$name, $surname, $username, hash('sha256', $password), $imagePath, "WAITING", date('Y-m-d H:i:s')]);
-    		if($branches) {
-    			$pid = $this->pdo->lastInsertId();
+    		$pid = $this->pdo->lastInsertId();
+
+    		if ($branches) {
     			foreach ($branches as $bid) {
     				$branchPt = $this->pdo->prepare("INSERT INTO pt_branch (pid, bid) VALUES (?, ?)");
     				$branchPt->execute([$pid, $bid]);
+    			}
+    		}
+
+    		if ($properties) {
+    			foreach ($properties as $prop => $value) {
+    				$ptProperties = $this->pdo->prepare("INSERT INTO pt_properties (pid, prop, value) VALUES (?, ?, ?)");
+    				$ptProperties->execute([$pid, $prop, $value]);
     			}
     		}
     		return true;
