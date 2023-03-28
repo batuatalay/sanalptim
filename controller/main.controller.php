@@ -14,7 +14,7 @@ spl_autoload_register( function($className) {
 class Main extends SimpleController{
 
 	public static function getMainPage() {
-		$site = Site::get();
+		$site = self::getFromAPI('site/getSettings');
 		$title = "SanalPTim.com | Çok Yakında";
 		self::header($title);
 
@@ -30,7 +30,7 @@ class Main extends SimpleController{
 
 	public static function getIndex() {
 		$pts = Pt::getPTs();
-		$site = Site::get();
+		$site = self::getFromAPI('site/getSettings');
 		//$phone = $site->settings['phone'];
 		$title = "SanalPTim.com | Sporun En konforlu hali";
 		self::header($title);

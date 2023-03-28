@@ -9,7 +9,7 @@
                         <a href="index.html">
                             <img src="assets/images/logo_footer.png" style="height: 50px !important" alt="Fithub">
                         </a>
-                        <p><?=$site->settings['footerMessage']?></p>
+                        <p><?=$site->settings->footerMessage?></p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
@@ -35,7 +35,7 @@
                                     <i class="fa fa-map-marker" aria-hidden="true"></i>
                                 </div>
                                 <div class="footer-contact-text">
-                                    <span><?=$site->settings['address']?></span>
+                                    <span><?=$site->settings->address?></span>
                                 </div>
                             </li>
                             <li>
@@ -43,8 +43,8 @@
                                     <i class="fa fa-phone" aria-hidden="true"></i>
                                 </div>
                                 <div class="footer-contact-text">
-                                    <span><?=$site->settings['phone']?></span>
-                                    <span><?=$site->settings['mobile']?></span>
+                                    <span><?=$site->settings->phone?></span>
+                                    <span><?=$site->settings->mobile?></span>
                                 </div>
                             </li>
                             <li>
@@ -52,7 +52,7 @@
                                     <i class="fa fa-envelope" aria-hidden="true"></i>
                                 </div>
                                 <div class="footer-contact-text">
-                                    <span><?=$site->settings['mail']?></span>
+                                    <span><?=$site->settings->mail?></span>
                                 </div>
                             </li>
                         </ul>
@@ -68,9 +68,9 @@
                         </div>
                         <div class="footer-social">
                             <ul>
-                                <li><a href="<?=$site->settings['facebook']?>"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                <li><a href="<?=$site->settings['instagram']?>"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                                <li><a href="<?=$site->settings['twitter']?>"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                <li><a href="<?=$site->settings->facebook?>"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                <li><a href="<?=$site->settings->instagram?>"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                <li><a href="<?=$site->settings->twitter?>"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
                             </ul>
                         </div>
                     </div>

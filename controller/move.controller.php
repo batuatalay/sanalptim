@@ -21,7 +21,7 @@ class Move extends SimpleController{
             "moves" => $moves
 
         ];
-        $site = Site::get();
+        $site = self::getFromAPI('site/getSettings');
         $title = "SanalPTim.com | Hareketler";
 
         self::header($title);
@@ -46,7 +46,7 @@ class Move extends SimpleController{
             "move" => $move
 
         ];
-        $site = Site::get();
+        $site = self::getFromAPI('site/getSettings');
         $title = "SanalPTim.com | " . $move['name'];
 
         self::header($title);

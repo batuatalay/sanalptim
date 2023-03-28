@@ -71,7 +71,7 @@ class Admin extends SimpleController{
         if(!self::isLogin("admin")) {
             header('Location: /admin/login');
         }
-         $site = Site::get();
+         $site = self::getFromAPI('site/getSettings');
          $args = [
              "settings" => $site->settings
          ];

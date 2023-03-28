@@ -43,7 +43,7 @@ class Pt extends SimpleController{
 
         ];
 
-        $site = Site::get();
+        $site = self::getFromAPI('site/getSettings');
         $title = "SanalPTim.com | Hocalarımız";
         self::header($title);
 

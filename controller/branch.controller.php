@@ -19,7 +19,7 @@ class Branch extends SimpleController{
 			"key" => $branchKey
 		]);
 		$branch = $branchModel->get();
-		$site = Site::get();
+		$site = self::getFromAPI('site/getSettings');
 		$title = "SanalPTim.com | " . $branch['name'];
 		self::header($title);
 		
