@@ -79,6 +79,38 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="row clearfix">
+                                    <div class="col-md-1 form-control-label">
+                                        <label for="title">Telefon</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" placeholder="" name="properties[phone]">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 form-control-label">
+                                        <label for="title">Eposta</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" placeholder="" name="properties[mail]">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 form-control-label">
+                                        <label for="title">Adres</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <textarea class="form-control" placeholder="" name="properties[address]"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                                 <?php if (isset($args['response']) && $args['response']) { ?>
                                     <div class="alert alert-success">
