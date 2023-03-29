@@ -53,5 +53,36 @@ $allEndPoints = [
 	"PUT" => []
 ];
 
+$APIEndpoints = [
+    "GET" => [
+        '/API/pt/get',
+        '/API/pt/get/#username',
+        '/API/pt/getById/#id',
+        '/API/pts',
+        '/API/pt/add',
+        '/API/branch/get/#branchKey',
+        '/API/branches',
+        '/API/moves',
+        '/API/move/get/#key',
+        '/API/settings'
+    ],
+
+    "POST" => [
+        '/API/login',
+        '/API/settings',
+        '/API/pt/add',
+        '/API/pt/edit',
+        '/API/pt/delete/#id',
+        '/API/branch/add',
+        '/API/branch/edit',
+        '/API/branch/delete/#id',
+        '/API/move/add',
+        '/API/move/edit',
+        '/API/move/delete/#id'
+    ]
+];
+foreach ($APIEndpoints as $key => $value) {
+	$allEndPoints[$key] = array_merge($value, $allEndPoints[$key]);
+}
 
 ?>

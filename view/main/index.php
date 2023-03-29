@@ -161,11 +161,11 @@
                     <div class="team-box wow fadeInUp" data-wow-delay=".5s">
                         <div class="team-img-box team-border-one">
                             <div class="team-img">
-                                <img src="<?php echo $pt['image'] ?>" alt="Trainer">
+                                <img src="<?php echo $pt->image?>" alt="Trainer">
                             </div>
                         </div>
                         <div class="team-content">
-                            <a href="team-detail.html"><h3 class="h3-title team-text-color"><?php echo $pt['name'] . " " . $pt['surname'] ?></h3></a>
+                            <a href="team-detail.html"><h3 class="h3-title team-text-color"><?php echo $pt->name . " " . $pt->surname ?></h3></a>
                         </div>
                     </div>
                 </div>

@@ -38,13 +38,30 @@ class Branch extends SimpleController{
 		self::view("branch", "index", $args);
 		$script = "";
 		self::footer($site, $script);
-		
+    }
 
+    public static function getBranchByBranchKey($branchKey) {
+    	$branchModel = new BranchModel([
+			"key" => $branchKey
+		]);
+		$branch = $branchModel->get();
+		echo json_encode($branch);
     }
 
     public static function getAll() {
     	$branchModel = new BranchModel();
     	$branches = $branchModel->getAll();
     	return $branches;
+    }
+
+    public static function allBranches() {
+    	$branchModel = new BranchModel();
+    	$branches = $branchModel->getAll();
+    	echo json_encode($branches);
+    }
+
+    public static function createNewBranch() {
+    	$branchModel = new BranchModel();
+    	$branchModel->createNewBranch($_POST);
     }
 }

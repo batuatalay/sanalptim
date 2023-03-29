@@ -55,4 +55,22 @@ class Move extends SimpleController{
         $script = "";
         self::footer($site, $script);
     }
+    public static function getAll4API() {
+        $moveModel = new MoveModel();
+        $moves = $moveModel->getAll();
+        echo json_encode($moves);
+    }
+
+    public static function getByMoveKey($key) {
+        $moveModel = new MoveModel([
+            'move_key' => $key
+        ]);
+        $move = $moveModel->get();
+        echo json_encode($move);
+    }
+
+    public static function createNewMove() {
+        $moveModel = new MoveModel();
+        $moveModel->createNewMove($_POST);
+    }
 }

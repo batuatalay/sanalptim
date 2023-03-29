@@ -40,4 +40,15 @@ class MoveModel extends Mysql
 			exit;
 		}
 	}
+	public function createNewMove($data) {
+		$name = $data['name'];
+		$move_key = $data['moveKey'];
+		$description = $data['description'];
+		$type = $data['type'];
+		$media = $data['media'];
+		$move = $this->pdo->prepare("INSERT INTO moves (move_key, name, description, type, media) VALUES (?, ?, ?, ?, ?)");
+		$move->execute([$move_key, $name, $description, $type, $media]);
+		$mid = $this->pdo->lastInsertId();
+		echo $mid;
+	}
 }

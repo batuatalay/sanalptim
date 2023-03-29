@@ -18,7 +18,8 @@ class Pt extends SimpleController{
 		$ptModel = new PtModel([
 			"username" => $username
 		]);
-		$ptModel->getByUsername();
+		$pt = $ptModel->getByUsername();
+        echo json_encode($pt);
 
     }
     public static function getByID($id) {
@@ -26,13 +27,13 @@ class Pt extends SimpleController{
     		'id' =>$id 
     	]);
     	$pt = $ptModel->getByID();
-    	return $pt;
+    	echo json_encode($pt);
     }
 
     public static function getPTs() {
     	$ptModel = new PtModel();
     	$pts = $ptModel->getAllPts();
-    	return $pts;
+        echo json_encode($pts);
     }
 
     public static function getAll(){
@@ -51,5 +52,10 @@ class Pt extends SimpleController{
 
         $script = "";
         self::footer($site, $script);
+    }
+    public static function createNewPt() {
+        $_POST['file'] = $_FILES['file'];
+        $ptModel = new PtModel();
+        $response = $ptModel->createPt($_POST);
     }
 }

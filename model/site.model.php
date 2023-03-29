@@ -20,5 +20,15 @@ class SiteSettingsModel extends Mysql
 			exit;
 		}
 	}
+	public function saveSettings($data) {
+		$truncate = $this->pdo->prepare("TRUNCATE site_settings");
+		$truncate->execute();
+		foreach ($data as $key => $value) {
+			$insert = $this->pdo->prepare("INSERT INTO site_settings (prop, value) VALUES (:prop, :value)");
+			$insert->bindParam(':prop', $key);
+			$insert->bindParam(':value', $value);
+			$insert->execute();
+		}
+	}
 }
 ?>

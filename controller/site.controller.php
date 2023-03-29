@@ -23,4 +23,9 @@ class Site extends SimpleController{
         $siteSettings = new SiteSettingsModel();
         echo json_encode($siteSettings);
     }
+    public static function saveSettings() {
+        $siteModel = new SiteSettingsModel();
+        $siteModel->saveSettings($_POST);
+        header('Location: /admin/settings');
+    }
 }

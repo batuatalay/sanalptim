@@ -29,7 +29,7 @@ class Main extends SimpleController{
 	}
 
 	public static function getIndex() {
-		$pts = Pt::getPTs();
+		$pts = self::getFromAPI('API/pt/get');
 		$site = self::getFromAPI('site/getSettings');
 		//$phone = $site->settings['phone'];
 		$title = "SanalPTim.com | Sporun En konforlu hali";

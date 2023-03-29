@@ -50,4 +50,17 @@ class BranchModel extends Mysql
 			exit;
 		}
 	}
+
+	public function createNewBranch($data) {
+    	try {
+	    	$branch_key = $this->seflink($data['name']);
+	    	$name = $data['name'];
+	    	$description = htmlspecialchars($data['content']);
+	    	$branch = $this->pdo->prepare("INSERT INTO branches (branch_key, name, description) VALUES (?, ?, ?)");
+		    $branch->execute([$branch_key, $name, $description]);
+		    return true;
+		} catch (PDOException $e) {
+			return false;
+		}
+    }
 }
