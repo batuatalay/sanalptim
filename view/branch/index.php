@@ -29,11 +29,11 @@
                 <div class="team-box wow fadeInUp" data-wow-delay=".5s">
                     <div class="team-img-box team-border-two">
                         <div class="team-img">
-                            <img src="<?=$pt['image']?>" alt="Trainer">
+                            <img src="<?=$pt->image?>" alt="Trainer">
                         </div>
                     </div>
                     <div class="team-content">
-                        <a href="#"><h3 class="h3-title"><?=$pt['name'] .' ' . $pt['surname']?> </h3></a>
+                        <a href="#"><h3 class="h3-title"><?=$pt->name .' ' . $pt->surname?> </h3></a>
                     </div>
                 </div>
             </div>

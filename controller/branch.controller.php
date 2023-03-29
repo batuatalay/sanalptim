@@ -26,8 +26,8 @@ class Branch extends SimpleController{
 		$result = $branchModel->getBranchWithPt($branch['id']);
 		$pts = [];
 		foreach ($result as $rs) {
-			$pt = Pt::getByID($rs['pid']);
-			$pts[$pt['id']] = $pt;
+			$pt = self::getFromAPI("API/pt/getById/" . $rs['pid']);
+			$pts[$pt->id] = $pt;
 		}
 		$args = [
 			"branch" => $branch,
