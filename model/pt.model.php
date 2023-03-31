@@ -16,6 +16,7 @@ class PtModel extends Mysql
 			$this->$key = $value;
 		}
 	}
+
 	public function getByUsername() {
 		try {
 			$result = $this->pdo->prepare("SELECT * FROM pts WHERE username=?");
@@ -28,11 +29,14 @@ class PtModel extends Mysql
 			exit;
 		}
 	}
+
 	public function getByID() {
 		try {
 			$result = $this->pdo->prepare("SELECT * FROM pts WHERE id=?");
 			$result->execute([$this->id]);
 			$pt = $result->fetch(PDO::FETCH_ASSOC);
+			$properties = $this->getProperties($this->id);
+			$pt['properties'] = $properties;
 			return $pt;
 		}
 		catch(PDOException $e) {
@@ -91,5 +95,77 @@ class PtModel extends Mysql
     	} catch (PDOException $e) {
     		return false;
     	}
+    }
+
+    public function getProperties($id) {
+		$ptProp = $this->pdo->prepare("SELECT * FROM pt_properties WHERE pid= ?");
+		$ptProp->execute([$id]);
+		$properties = $ptProp->fetchAll(PDO::FETCH_ASSOC);
+		$ptProperties = [];
+		foreach ($properties as $property) {
+			$ptProperties[$property['prop']] = $property['value'];
+		}
+		return $ptProperties;
+    }
+
+    public function editPt($postData) {
+    	$sql = [];
+    	$updateData = [];
+    	$properties = [];
+    	try {
+	    	foreach ($postData as $key => $data) {
+	    		if ($key == "file") {
+
+	    		} else if ($key == "id") {
+	    			$id = $data;
+	    		} else if ($key == "properties"){
+	    			foreach ($data as $pkey => $dt) {
+	    				$properties[$pkey] = $dt;
+	    			}
+	    		} else {
+	    			$sql[] = $key . "=?";
+	    			$updateData[] = $data;
+	    		}
+	    	} 
+	    	$updateQuery = implode(',', $sql);
+	    	$editPt = $this->pdo->prepare("UPDATE pts SET ". $updateQuery ." WHERE id = ?");
+	    	array_push($updateData, $id);
+	    	$editPt->execute($updateData);
+	    } catch(PDOException $e) {
+	    	$this->return(401, "Pt Update Error");
+	    }
+
+    	if(!empty($properties)) {
+    		try {
+	    		foreach ($properties as $prop => $property) {
+		    		$editPtProperties = $this->pdo->prepare("UPDATE pt_properties SET value = ? WHERE pid= ? AND prop= ?");
+		    		$editPtProperties->execute([$property, $id, $prop]);
+		    	}
+		    } catch (PDOException $e) {
+		    	$this->return(401, "Pt Property Update Error");
+		    }
+    	}
+    	$this->return(200, 'Pt Update Success');
+    }
+
+    public function delete() {
+    	try {
+    		$engine = $this->pdo->prepare("DELETE FROM pts WHERE id = ?");
+    		$engine->execute([$this->id]);
+    	} catch (PDOException $e) {
+    		$this->return(401, "Pt Delete Error");
+    	}
+
+    	try {
+    		$engine = $this->pdo->prepare("DELETE FROM pt_properties WHERE pid = ?");
+    		$engine->execute([$this->id]);
+    	} catch (PDOException $e) {
+    		$this->return(401, "Pt Properties Delete Error");
+    	}
+    	$this->return(200, "PT Delete Success");
+    }
+
+    public function return($code, $message) {
+    	echo json_encode(['code' => $code, 'message'=> $message]);
     }
 }

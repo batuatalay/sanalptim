@@ -34,15 +34,23 @@
 		}
 
 		public function post($url, $callback, $parameters = null) {
+			$parameters = $this->getParamaters($url);
+			if(!empty($parameters)) {
+				$url = str_replace($parameters[0], $parameters[1], $url);
+				$parameters = $parameters[1];
+			}
 			if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				$parameters = $_POST;
 				$this->runFunction($url, $callback, $parameters);
 			}
 		}
 		public function delete($url, $callback, $parameters = null) {
-			var_dump($url);exit;
-			if ($_SERVER["REQUEST_METHOD"] == "POST") {
-				$parameters = $_POST;
+			$parameters = $this->getParamaters($url);
+			if(!empty($parameters)) {
+				$url = str_replace($parameters[0], $parameters[1], $url);
+				$parameters = $parameters[1];
+			}
+			if ($_SERVER["REQUEST_METHOD"] == "DELETE") {
 				$this->runFunction($url, $callback, $parameters);
 			}
 		}
@@ -54,7 +62,8 @@
 					return 0;
 				};
 				$controller = explode("@", $callback);
-				$controllerFile =BASE . '/controller/' . strtolower($controller[0]) . ".controller.php";
+				$controllerFile = BASE . '/controller/' . strtolower($controller[0]) . ".controller.php";
+
 				if(file_exists($controllerFile)) {
 					require $controllerFile;
 					call_user_func([new $controller[0], $controller[1]], $parameters);

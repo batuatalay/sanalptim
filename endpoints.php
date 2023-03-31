@@ -71,14 +71,20 @@ $APIEndpoints = [
         '/API/login',
         '/API/settings',
         '/API/pt/add',
-        '/API/pt/edit',
+        '/API/pt/edit/#id',
         '/API/pt/delete/#id',
+
         '/API/branch/add',
         '/API/branch/edit',
         '/API/branch/delete/#id',
+
         '/API/move/add',
         '/API/move/edit',
-        '/API/move/delete/#id'
+        '/API/move/delete/#id',
+    ],
+
+    "DELETE" => [
+    	'/API/pt/delete/#id'
     ]
 ];
 foreach ($APIEndpoints as $key => $value) {
