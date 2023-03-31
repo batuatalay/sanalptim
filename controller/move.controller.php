@@ -73,4 +73,16 @@ class Move extends SimpleController{
         $moveModel = new MoveModel();
         $moveModel->createNewMove($_POST);
     }
+
+    public static function editMove() {
+        $MoveModel = new MoveModel();
+        $MoveModel->edit($_POST);
+    }
+
+    public static function deleteMove($id) {
+        $MoveModel = new MoveModel([
+            'id' => $id
+        ]);
+        $MoveModel->delete();
+    }
 }
