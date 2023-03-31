@@ -65,11 +65,13 @@ class Branch extends SimpleController{
     	$branchModel->createNewBranch($_POST);
     }
 
-    public static function editBranch() {
+    public static function editBranch($bid) {
         if(!empty($_FILES)) {
             $_POST['file'] = $_FILES['file'];
         }
-        $BranchModel = new BranchModel();
+        $BranchModel = new BranchModel([
+        	'id' => $bid
+        ]);
         $response = $BranchModel->edit($_POST);
     }
 

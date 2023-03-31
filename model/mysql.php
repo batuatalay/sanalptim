@@ -15,6 +15,7 @@ class Mysql {
 	
 	public function return($code, $message) {
     	echo json_encode(['code' => $code, 'message'=> $message]);
+        exit;
     }
 
     public function seflink($text){

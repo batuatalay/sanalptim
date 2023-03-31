@@ -32,8 +32,10 @@ class Workout extends SimpleController{
     	$WorkoutModel->workoutAdd($_POST);
     }
 
-    public static function workoutEdit() {
-    	$WorkoutModel = new WorkoutModel();
+    public static function workoutEdit($wid) {
+    	$WorkoutModel = new WorkoutModel([
+    		'id' => $wid
+    	]);
     	$WorkoutModel->workoutEdit($_POST);
     }
 

@@ -61,14 +61,10 @@ class WorkoutModel extends Mysql
 		$updateData = [];
 		try {
 			foreach ($postData as $key => $data) {
-				if($key == "id") {
-					$id = $data;
-				} else {
-					$updateSql[] = $key . "=?";
-					$updateData[] = $data;
-				}
+				$updateSql[] = $key . "=?";
+				$updateData[] = $data;
 			}
-			array_push($updateData, $id);
+			array_push($updateData, $this->id);
 			$engine = $this->pdo->prepare("UPDATE workouts set ". implode(",", $updateSql) . "WHERE id=?");
 			$engine->execute($updateData);
 		} catch (PDOException $e) {

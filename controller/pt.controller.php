@@ -59,11 +59,13 @@ class Pt extends SimpleController{
         $response = $ptModel->createPt($_POST);
     }
 
-    public static function editPt() {
+    public static function editPt($pid) {
         if(!empty($_FILES)) {
             $_POST['file'] = $_FILES['file'];
         }
-        $ptModel = new PtModel();
+        $ptModel = new PtModel([
+            'id' => $pid
+        ]);
         $response = $ptModel->editPt($_POST);
     }
 

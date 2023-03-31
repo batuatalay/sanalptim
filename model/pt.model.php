@@ -116,8 +116,6 @@ class PtModel extends Mysql
 	    	foreach ($postData as $key => $data) {
 	    		if ($key == "file") {
 
-	    		} else if ($key == "id") {
-	    			$id = $data;
 	    		} else if ($key == "properties"){
 	    			foreach ($data as $pkey => $dt) {
 	    				$properties[$pkey] = $dt;
@@ -129,7 +127,7 @@ class PtModel extends Mysql
 	    	} 
 	    	$updateQuery = implode(',', $sql);
 	    	$editPt = $this->pdo->prepare("UPDATE pts SET ". $updateQuery ." WHERE id = ?");
-	    	array_push($updateData, $id);
+	    	array_push($updateData, $this->id);
 	    	$editPt->execute($updateData);
 	    } catch(PDOException $e) {
 	    	$this->return(401, "Pt Update Error");

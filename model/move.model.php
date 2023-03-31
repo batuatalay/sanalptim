@@ -58,24 +58,19 @@ class MoveModel extends Mysql
     	$properties = [];
     	try {
 	    	foreach ($postData as $key => $data) {
-	    		if ($key == "file") {
-
-	    		} else if ($key == "id") {
-	    			$id = $data;
-	    		} else {
-	    			$sql[] = $key . "=?";
-	    			$updateData[] = $data;
-	    			if ($key == "name") {
-	    				$sql[] = "move_key=?";
-	    				$updateData[] = $this->seflink($data);
-	    			}
+	    		$sql[] = $key . "=?";
+	    		$updateData[] = $data;
+	    		if ($key == "name") {
+	    			$sql[] = "move_key=?";
+	    			$updateData[] = $this->seflink($data);
 	    		}
 	    	} 
 	    	$updateQuery = implode(',', $sql);
 	    	$engine = $this->pdo->prepare("UPDATE moves SET ". $updateQuery ." WHERE id = ?");
-	    	array_push($updateData, $id);
+	    	array_push($updateData, $this->id);
 	    	$engine->execute($updateData);
 	    } catch(PDOException $e) {
+	    	var_dump($e);exit;
 	    	$this->return(401, "Move Update Error");
 	    }
 	    $this->return(200, "Move Update Sucess");

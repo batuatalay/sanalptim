@@ -70,20 +70,16 @@ class BranchModel extends Mysql
     	$properties = [];
     	try {
 	    	foreach ($postData as $key => $data) {
-				if ($key == "id") {
-	    			$id = $data;
-	    		} else {
-	    			$sql[] = $key . "=?";
-	    			$updateData[] = $data;
-	    			if ($key == "name") {
-	    				$sql[] = "branch_key" . "=?";
-	    				$updateData[] = $this->seflink($data);
-	    			}
+	    		$sql[] = $key . "=?";
+	    		$updateData[] = $data;
+	    		if ($key == "name") {
+	    			$sql[] = "branch_key" . "=?";
+	    			$updateData[] = $this->seflink($data);
 	    		}
 	    	} 
 	    	$updateQuery = implode(',', $sql);
 	    	$engine = $this->pdo->prepare("UPDATE branches SET " . $updateQuery . " WHERE id = ?");
-	    	array_push($updateData, $id);
+	    	array_push($updateData, $this->id);
 	    	$engine->execute($updateData);
     	} catch (PDOException $e) {
     		$this->return(401, "Branch Update Fail");
