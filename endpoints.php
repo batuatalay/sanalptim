@@ -64,6 +64,7 @@ $APIEndpoints = [
         '/API/branches',
         '/API/moves',
         '/API/move/get/#key',
+        '/API/workout/get/#cid',
         '/API/settings'
     ],
 
@@ -80,13 +81,18 @@ $APIEndpoints = [
 
         '/API/move/add',
         '/API/move/edit/#id',
-        '/API/move/delete/#id'
+        '/API/move/delete/#id',
+
+        '/API/workout/add',
+        '/API/workout/edit/#id',
+        '/API/workout/delete/#id'
     ],
 
     "DELETE" => [
     	'/API/pt/delete/#id',
     	'/API/branch/delete/#id',
-    	'/API/move/delete/#id'
+    	'/API/move/delete/#id',
+    	'/API/workout/delete/#id'
     ]
 ];
 foreach ($APIEndpoints as $key => $value) {

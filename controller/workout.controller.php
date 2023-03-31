@@ -19,4 +19,28 @@ class Workout extends SimpleController{
 		$workouts = $workoutModel->getAll();
 		var_dump($workouts);exit;
     }
+
+    public static function getClientWorkouts($clientId) {
+    	$WorkoutModel = new WorkoutModel([
+    		'cid' => $clientId
+    	]);
+    	$WorkoutModel->getClientWorkouts();
+    }
+
+    public static function workoutAdd() {
+    	$WorkoutModel = new WorkoutModel();
+    	$WorkoutModel->workoutAdd($_POST);
+    }
+
+    public static function workoutEdit() {
+    	$WorkoutModel = new WorkoutModel();
+    	$WorkoutModel->workoutEdit($_POST);
+    }
+
+    public static function workoutDelete($id) {
+    	$WorkoutModel = new WorkoutModel([
+    		'id' => $id
+    	]);
+    	$WorkoutModel->delete();
+    }
 }

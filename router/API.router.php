@@ -28,3 +28,9 @@ $route->run('POST', '/API/move/add', "move@createNewMove");
 $route->run('POST', '/API/move/edit/#id', "move@editMove");
 $route->run('DELETE', '/API/move/delete/#id', "move@deleteMove");
 
+//workout CRUD
+$route->run("GET", '/API/workout/get/#cid', "workout@getClientWorkouts");
+$route->run("POST", '/API/workout/add', "workout@workoutAdd");
+$route->run("POST", '/API/workout/edit/#id', "workout@workoutEdit");
+$route->run("DELETE", '/API/workout/delete/#id', "workout@workoutDelete");
+

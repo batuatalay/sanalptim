@@ -40,7 +40,6 @@
 				$parameters = $parameters[1];
 			}
 			if ($_SERVER["REQUEST_METHOD"] == "POST") {
-				$parameters = $_POST;
 				$this->runFunction($url, $callback, $parameters);
 			}
 		}
