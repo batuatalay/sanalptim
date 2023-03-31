@@ -63,4 +63,41 @@ class BranchModel extends Mysql
 			return false;
 		}
     }
+
+    public function edit($postData) {
+    	$sql = [];
+    	$updateData = [];
+    	$properties = [];
+    	try {
+	    	foreach ($postData as $key => $data) {
+				if ($key == "id") {
+	    			$id = $data;
+	    		} else {
+	    			$sql[] = $key . "=?";
+	    			$updateData[] = $data;
+	    			if ($key == "name") {
+	    				$sql[] = "branch_key" . "=?";
+	    				$updateData[] = $this->seflink($data);
+	    			}
+	    		}
+	    	} 
+	    	$updateQuery = implode(',', $sql);
+	    	$engine = $this->pdo->prepare("UPDATE branches SET " . $updateQuery . " WHERE id = ?");
+	    	array_push($updateData, $id);
+	    	$engine->execute($updateData);
+    	} catch (PDOException $e) {
+    		$this->return(401, "Branch Update Fail");
+    	}
+    	$this->return(200, "Branch Update Success");
+    }
+
+    public function delete() {
+    	try {
+    		$engine = $this->pdo->prepare("DELETE FROM branches WHERE id =?");
+    		$engine->execute([$this->id]);
+    	} catch (PDOException $e) {
+    		$this->return(401, "Branch Delete Fail");
+    	}
+    	$this->return(200, "Branch Delete Success");
+    }
 }

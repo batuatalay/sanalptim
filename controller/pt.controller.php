@@ -64,7 +64,7 @@ class Pt extends SimpleController{
             $_POST['file'] = $_FILES['file'];
         }
         $ptModel = new PtModel();
-        $response = $ptModel->editPt($id, $_POST);
+        $response = $ptModel->editPt($_POST);
     }
 
     public static function deletePt($id) {

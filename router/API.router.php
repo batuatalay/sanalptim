@@ -15,7 +15,6 @@ $route->run('GET', '/API/move/get/#key', "move@getByMoveKey");
 
 $route->run('GET', '/API/settings', "site@get4API");
 
-$route->run('POST', '/API/branch/add', "branch@createNewBranch");
 $route->run('POST', '/API/move/add', "move@createNewMove");
 $route->run('POST', '/API/settings', "site@saveSettings");
 
@@ -24,4 +23,9 @@ $route->run('POST', '/API/settings', "site@saveSettings");
 $route->run('POST', '/API/pt/add', "pt@createNewPt");
 $route->run('POST', '/API/pt/edit/#id', "pt@editPt");
 $route->run('DELETE', '/API/pt/delete/#id', "pt@deletePt");
+
+//branch CRUD
+$route->run('POST', '/API/branch/add', "branch@createNewBranch");
+$route->run('POST', '/API/branch/edit/#id', "branch@editBranch");
+$route->run('DELETE', '/API/branch/delete/#id', "branch@deleteBranch");
 

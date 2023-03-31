@@ -164,8 +164,4 @@ class PtModel extends Mysql
     	}
     	$this->return(200, "PT Delete Success");
     }
-
-    public function return($code, $message) {
-    	echo json_encode(['code' => $code, 'message'=> $message]);
-    }
 }
