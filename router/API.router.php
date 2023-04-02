@@ -34,3 +34,10 @@ $route->run("POST", '/API/workout/add', "workout@workoutAdd");
 $route->run("POST", '/API/workout/edit/#id', "workout@workoutEdit");
 $route->run("DELETE", '/API/workout/delete/#id', "workout@workoutDelete");
 
+//Blog CRUD
+$route->run("GET", "/API/blogs", "blog@getAll");
+$route->run("GET", "/API/blog/#blog", "blog@get");
+$route->run("POST", "/API/blog/add", "blog@add");
+$route->run("POST", "/API/blog/edit/#id", "blog@edit");
+$route->run("DELETE", "/API/blog/delete/#id", "blog@delete");
+
