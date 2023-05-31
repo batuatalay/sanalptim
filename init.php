@@ -11,9 +11,9 @@ define("DBHOST", "localhost");
 define("DBNAME", "sanalptim");
 if(DEVELOPMENT) {
 	define("DBUSERNAME", "phpmyadmin");
-	define("DBPASSWORD", "1.(Sanalptim)");
+	define("DBPASSWORD", "***********");
 } else {
 	define("DBUSERNAME", "sanalDB");
-	define("DBPASSWORD", "1.(Sinematalay)");
+	define("DBPASSWORD", "*********");
 }
 
